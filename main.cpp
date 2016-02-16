@@ -72,7 +72,6 @@ bool score(int user, int comp, int rolls)
 int main()
 {
     SuperOutput so = new SuperOutput("output.txt");
-    ofstream so;
     so.open("output.txt");
 
     bool outcome = false;
