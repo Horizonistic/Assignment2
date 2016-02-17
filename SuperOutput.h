@@ -1,3 +1,5 @@
+#include <bits/stringfwd.h>
+
 #ifndef COMPUTERGAME_SUPEROUTPUT_H
 #define COMPUTERGAME_SUPEROUTPUT_H
 
@@ -5,22 +7,19 @@
 #include <stdlib.h>
 #include <fstream>
 
-using namespace std;
-
-
-
 class SuperOutput
 {
 private:
-    ofstream file;
+    std::ofstream file;
 public:
-    SuperOutput(string filename);
-    void print(string input);
+    SuperOutput(std::string filename);
+    void to_string(int num);
+    void print(std::string input);
     void println();
-    void println(string input);
-    void printFile(string input);
+    void println(std::string input);
+    void printFile(std::string input);
     void printlnFile();
-    void printlnFile(string input);
+    void printlnFile(std::string input);
     void close();
 };
 

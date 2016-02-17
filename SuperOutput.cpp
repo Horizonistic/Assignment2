@@ -1,45 +1,53 @@
 #include <iostream>
 #include <fstream>
 
-using namespace std;
-
 class SuperOutput
 {
 private:
-    ofstream file;
+    std::ofstream file;
 
 public:
-    SuperOutput(string filename) {
+    SuperOutput(std::string filename)
+    {
         this->file.open(filename);
     }
 
-    void print(string input) {
-        cout << input;
+    void to_string(int num)
+    {
+        // Divide by 10, remainder and such
+    }
+
+    void print(std::string input)
+    {
+        std::cout << input;
         this->file << input;
     }
 
-    void println() {
-        cout << "\n";
+    void println()
+    {
+        std::cout << "\n";
         this->file << "\n";
     }
 
-    void println(string input) {
-        cout << endl << input;
-        this->file << endl << input;
+    void println(std::string input)
+    {
+        std::cout << std::endl << input;
+        this->file << std::endl << input;
     }
 
-    void printFile(string input) {
+    void printFile(std::string input)
+    {
         this->file << input;
     }
 
     void printlnFile()
     {
-        this->file << endl;
+        this->file << std::endl;
     }
 
-    void printlnFile(string input)
+    void printlnFile(std::string input)
     {
-        this->file << endl << input;
+        this->file << std::endl << input;
     }
 
     void close()
