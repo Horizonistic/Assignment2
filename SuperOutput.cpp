@@ -1,57 +1,46 @@
+#include "SuperOutput.h"
 #include <iostream>
 #include <fstream>
 
-class SuperOutput
+SuperOutput::SuperOutput(std::string filename)
 {
-private:
-    std::ofstream file;
+    this->file.open(filename);
+}
 
-public:
-    SuperOutput(std::string filename)
-    {
-        this->file.open(filename);
-    }
+void SuperOutput::print(std::string input)
+{
+    std::cout << input;
+    this->file << input;
+}
 
-    void to_string(int num)
-    {
-        // Divide by 10, remainder and such
-    }
+void SuperOutput::println()
+{
+    std::cout << "\n";
+    this->file << "\n";
+}
 
-    void print(std::string input)
-    {
-        std::cout << input;
-        this->file << input;
-    }
+void SuperOutput::println(std::string input)
+{
+    std::cout << std::endl << input;
+    this->file << std::endl << input;
+}
 
-    void println()
-    {
-        std::cout << "\n";
-        this->file << "\n";
-    }
+void SuperOutput::printFile(std::string input)
+{
+    this->file << input;
+}
 
-    void println(std::string input)
-    {
-        std::cout << std::endl << input;
-        this->file << std::endl << input;
-    }
+void SuperOutput::printlnFile()
+{
+    this->file << std::endl;
+}
 
-    void printFile(std::string input)
-    {
-        this->file << input;
-    }
+void SuperOutput::printlnFile(std::string input)
+{
+    this->file << std::endl << input;
+}
 
-    void printlnFile()
-    {
-        this->file << std::endl;
-    }
-
-    void printlnFile(std::string input)
-    {
-        this->file << std::endl << input;
-    }
-
-    void close()
-    {
-        this->file.close();
-    }
-};
+void SuperOutput::close()
+{
+    this->file.close();
+}

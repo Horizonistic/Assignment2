@@ -11,10 +11,9 @@
  * to the file is ridiculous.
  */
 
-#include <iostream>
-#include <stdlib.h>
 #include <fstream>
-#include <SuperOutput.h>
+#include <stdlib.h>
+#include <iostream>
 #include "SuperOutput.h"
 
 using namespace std;
@@ -69,11 +68,35 @@ bool score(int user, int comp, int rolls)
     return userDiff < compDiff; // True if player is closer, false if computer is closer or distance is even
 }
 
+
+class String
+{
+public:
+    static string toString(int num)
+    {
+        string temp = "";
+        string output = "";
+        int quotient, remainder;
+        do
+        {
+            temp = "";
+            quotient = num / 10;
+            remainder = num % 10;
+            num = quotient;
+            temp = remainder + 48; // Add 48 to get ASCII character
+            // Unable to append to output directly; assigning to temp converts it to string
+            output = temp + output;
+        }
+        while (quotient != 0);
+
+        return output;
+    }
+};
+
 int main()
 {
-    SuperOutput so = new SuperOutput("output.txt");
-    ofstream so;
-    so.open("output.txt");
+    SuperOutput * so = new SuperOutput("output.txt");
+    so->println(String::toString(1));
 
     bool outcome = false;
 
@@ -91,7 +114,7 @@ int main()
     do
     {
         cout << endl << "The current score is You: " << userScore << "; Computer: " << compScore << endl;
-        so << "The current score is You: " << userScore << "; Computer: " << compScore << endl;
+        so->println("The current score is You: " + String::toString(userScore) + "; Computer: " + String::toString(compScore));
 
         cout << "Please enter a number from 3 to 18, or -1 to exit" << endl;
         so << "Please enter a number from 3 to 18, or -1 to exit" << endl;
@@ -169,6 +192,6 @@ int main()
         so << endl;
     }
     while (userGuess != -1);
-
+     */
     return 0;
 }
